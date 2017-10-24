@@ -1,0 +1,153 @@
+﻿<Page x:Class="StarPRNTSDK.AllReceiptsSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="1200" d:DesignWidth="1200"
+      Title="AllReceiptsSamplePage" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <Page.Resources >
+        <local:AllReceiptsInfoManager x:Key="AllReceiptsInfoManager" />
+
+        <local:PrintLocalizeReceiptWithAllReceiptsClickEvent x:Key="PrintTextReceiptWithAllReceiptsCommand" ReceiptInformationManager="{StaticResource TextReceipt}" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=TextReceiptEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptWithAllReceiptsClickEvent x:Key="PrintTextReceiptUTF8WithAllReceiptsCommand" ReceiptInformationManager="{StaticResource TextReceiptUTF8}" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=TextUTF8ReceiptEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptWithAllReceiptsClickEvent x:Key="PrintRasterReceiptWithAllReceiptsCommand" ReceiptInformationManager="{StaticResource RasterReceipt}" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=RasterReceiptEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptWithAllReceiptsClickEvent x:Key="PrintRasterReceiptBothScaleWithAllReceiptsCommand" ReceiptInformationManager="{StaticResource RasterReceiptBothScale}" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=RasterReceiptEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptWithAllReceiptsClickEvent x:Key="PrintRasterReceiptScaleWithAllReceiptsCommand" ReceiptInformationManager="{StaticResource RasterReceiptScale}" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=RasterReceiptEnabled, Mode=OneWay}" />
+
+        <local:AllReceiptsRegistrationClickEvent x:Key="AllReceiptsRegistrationCommand" Executable="True" />
+        <local:DeleteRegistrationFileClickEvent x:Key="AllReceiptsDeleteRegistrationFileCommand" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=IsRegistered, Mode=OneWay}" />
+
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoAllReceiptsExtPageTextCommand" ReceiptType="Text" NavigationUri="AllReceiptsExtSamplePage.xaml" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=TextReceiptEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoAllReceiptsExtPageTextUTF8Command" ReceiptType="TextUTF8" NavigationUri="AllReceiptsExtSamplePage.xaml" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=TextUTF8ReceiptEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoAllReceiptsExtPageRasterCommand" ReceiptType="Raster" NavigationUri="AllReceiptsExtSamplePage.xaml" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=RasterReceiptEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoAllReceiptsExtPageRasterBothScaleCommand" ReceiptType="RasterBothScale" NavigationUri="AllReceiptsExtSamplePage.xaml" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=RasterReceiptEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoAllReceiptsExtPageRasterScaleCommand" ReceiptType="RasterScale" NavigationUri="AllReceiptsExtSamplePage.xaml" Executable="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=RasterReceiptEnabled, Mode=OneWay}" />
+
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=AllReceiptsSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOSDKSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextReceiptWithAllReceiptsCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceiptUTF8}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextReceiptUTF8WithAllReceiptsCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterReceiptWithAllReceiptsCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptBothScale}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterReceiptBothScaleWithAllReceiptsCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptScale}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterReceiptScaleWithAllReceiptsCommand}" />
+
+            </ListBox>
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOExtManagerSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoAllReceiptsExtPageTextCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceiptUTF8}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoAllReceiptsExtPageTextUTF8Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoAllReceiptsExtPageRasterCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptBothScale}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoAllReceiptsExtPageRasterBothScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptScale}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource GoAllReceiptsExtPageRasterScaleCommand}" />
+            </ListBox>
+
+            <Label Content="Procedure" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem                    
+                    Title="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=RegistrationStateDescription}"
+                    ForeGroundColor="Blue"
+                    BackGroudColor="LightGreen"
+                    BorderBlushColor="LightGray"
+                    IsAnimation="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=IsUnRegistered}"
+                    ListBoxItemTouchedCommand="{StaticResource AllReceiptsRegistrationCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="Delete Config File"
+                    ForeGroundColor="Blue"
+                    BackGroudColor="LightGreen"
+                    ListBoxItemTouchedCommand="{StaticResource AllReceiptsDeleteRegistrationFileCommand}" />
+
+            </ListBox>
+
+            <Label Content="Print Setting" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemWithCheckBoxTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:ListBoxItemWithCheckBox
+                    Title="Receipt"
+                    ForeGroundColor="Blue"
+                    BackGroudColor="LightBlue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{x:Null}"
+                    CheckBoxIsChecked="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=PrintReceipt, Mode=TwoWay}" />
+
+                <local:ListBoxItemWithCheckBox
+                    Title="Information"
+                    ForeGroundColor="Blue"
+                    BackGroudColor="LightBlue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{x:Null}"
+                    CheckBoxIsChecked="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=PrintInformation, Mode=TwoWay}"/>
+
+                <local:ListBoxItemWithCheckBox
+                    Title="QR Code"
+                    ForeGroundColor="Blue"
+                    BackGroudColor="LightBlue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{x:Null}"
+                    CheckBoxIsChecked="{Binding Source={StaticResource AllReceiptsInfoManager}, Path=PrintQrCode, Mode=TwoWay}"/>
+
+            </ListBox>
+
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>

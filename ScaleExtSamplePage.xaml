@@ -1,0 +1,32 @@
+﻿<Page x:Class="StarPRNTSDK.ScaleExtSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="ScaleExtSamplePage" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <local:CustomScrollViewer >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="{Binding Source={StaticResource ResourceManager}, Path=ScaleExtSamlePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Button Grid.Row="0" HorizontalAlignment="Right" Template="{StaticResource RefreshButtonTemplete}" Margin="0, 0, 20, 0" Click="RefreshButton_Click"/>
+
+            <TextBlock x:Name="StatusTextBlock" Grid.Row="1" Style="{StaticResource ExtStatusTextBlockStyle}" />
+
+            <Button Grid.Row="2" Content="Zero Clear" HorizontalAlignment="Left" Style="{StaticResource ClearButtonStyle}" Margin="20, 0, 0, 20" Click="ZeroClearButton_Click" />
+
+            <Button Grid.Row="2" Content="Unit Change" HorizontalAlignment="Right" Width="300" Style="{StaticResource CallFunctionButtonStyle}" Margin="0, 0, 20, 20" Click="UnitChangeButton_Click" />
+
+        </Grid>
+
+    </local:CustomScrollViewer>
+</Page>

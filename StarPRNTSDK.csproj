@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4039E6D-0715-48C5-9F58-84E62506B5E4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StarPRNTSDK</RootNamespace>
+    <AssemblyName>StarPRNTSDK</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\app_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK_Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\SDK_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK_Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\SDK_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK_Release|x64'">
+    <OutputPath>bin\x64\SDK_Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK_Release|x86'">
+    <OutputPath>bin\x86\SDK_Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="SMCloudServicesSolution, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\SMCloudServicesSolution.dll</HintPath>
+    </Reference>
+    <Reference Include="StarIO, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\StarIO.dll</HintPath>
+    </Reference>
+    <Reference Include="StarIOExtension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\StarIOExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AllReceiptsExtSamplePage.xaml.cs">
+      <DependentUpon>AllReceiptsExtSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AllReceiptsSamplePage.xaml.cs">
+      <DependentUpon>AllReceiptsSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="APISamplePage.xaml.cs">
+      <DependentUpon>APISamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeReaderExtSamplePage.xaml.cs">
+      <DependentUpon>BarcodeReaderExtSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BlackMarkPasteSamplePage.xaml.cs">
+      <DependentUpon>BlackMarkPasteSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BlackMarkSamplePage.xaml.cs">
+      <DependentUpon>BlackMarkSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BluetoothSettingSamplePage.xaml.cs">
+      <DependentUpon>BluetoothSettingSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CashDrawerExtSamplePage.xaml.cs">
+      <DependentUpon>CashDrawerExtSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CashDrawerSamplePage.xaml.cs">
+      <DependentUpon>CashDrawerSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CombinationExtSamplePage.xaml.cs">
+      <DependentUpon>CombinationExtSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CombinationPrinterDriverSamplePage.xaml.cs">
+      <DependentUpon>CombinationPrinterDriverSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CombinationSamplePage.xaml.cs">
+      <DependentUpon>CombinationSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Communications\Communication.cs" />
+    <Compile Include="Communications\ScaleCommunication.cs" />
+    <Compile Include="DeviceStatusSamplePage.xaml.cs">
+      <DependentUpon>DeviceStatusSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayExtSamplePage.xaml.cs">
+      <DependentUpon>DisplayExtSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplaySamplePage.xaml.cs">
+      <DependentUpon>DisplaySamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\AllReceiptsFunctions.cs" />
+    <Compile Include="Functions\APIFunctions.cs" />
+    <Compile Include="Functions\BcrBuilder.cs" />
+    <Compile Include="Functions\BcrDataParser.cs" />
+    <Compile Include="Functions\BcrFunctions.cs" />
+    <Compile Include="Functions\CashDrawerFunctions.cs" />
+    <Compile Include="Functions\CombinationFunctions.cs" />
+    <Compile Include="Functions\DisplayFunctions.cs" />
+    <Compile Include="Functions\ScaleFunctions.cs" />
+    <Compile Include="PageModeSamplePage.xaml.cs">
+      <DependentUpon>PageModeSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrinterDriverWithBarcodeReaderSamplePage.xaml.cs">
+      <DependentUpon>PrinterDriverWithBarcodeReaderSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrinterDriverWithCheckStatusSamplePage.xaml.cs">
+      <DependentUpon>PrinterDriverWithCheckStatusSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrinterDriverWithDisplaySamplePage.xaml.cs">
+      <DependentUpon>PrinterDriverWithDisplaySamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrinterDriverWithScaleSamplePage.xaml.cs">
+      <DependentUpon>PrinterDriverWithScaleSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrinterExtSamplePage.xaml.cs">
+      <DependentUpon>PrinterExtSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScaleExtSamplePage.xaml.cs">
+      <DependentUpon>ScaleExtSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScaleSamplePage.xaml.cs">
+      <DependentUpon>ScaleSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIManager\AllReceiptsInfoManager.cs" />
+    <Compile Include="UIManager\APIManager.cs" />
+    <Compile Include="UIManager\BluetoothSecurityTypeManager.cs" />
+    <Compile Include="UIManager\CustomScrollViewer.cs" />
+    <Compile Include="UIManager\DisplayFunctionManager.cs" />
+    <Compile Include="UIManager\EnterTextWindow.xaml.cs">
+      <DependentUpon>EnterTextWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIManager\ModelDictionary.cs" />
+    <Compile Include="UIManager\ModelFinder.cs" />
+    <Compile Include="UIManager\ModelInformation.cs" />
+    <Compile Include="UIManager\NotifyIconForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIManager\NotifyIconForm.Designer.cs">
+      <DependentUpon>NotifyIconForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIManager\PortInfoManager.cs" />
+    <Compile Include="UIManager\PrinterDriverManager.cs" />
+    <Compile Include="UIManager\ProgressBarWindow.xaml.cs">
+      <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIManager\InterfaceInformation.cs" />
+    <Compile Include="LocalizeReceipts\EnglishReceipt.cs" />
+    <Compile Include="LocalizeReceipts\FrenchReceipt.cs" />
+    <Compile Include="LocalizeReceipts\GermanReceipt.cs" />
+    <Compile Include="LocalizeReceipts\JapaneseReceipt.cs" />
+    <Compile Include="LocalizeReceipts\LocalizeReceipt.cs" />
+    <Compile Include="LocalizeReceipts\PortugueseReceipt.cs" />
+    <Compile Include="LocalizeReceipts\RussianReceipt.cs" />
+    <Compile Include="LocalizeReceipts\SimplifiedChineseReceipt.cs" />
+    <Compile Include="LocalizeReceipts\SpanishReceipt.cs" />
+    <Compile Include="LocalizeReceipts\TraditionalChineseReceipt.cs" />
+    <Compile Include="Functions\PrinterFunctions.cs" />
+    <Compile Include="PrinterSamplePage.xaml.cs">
+      <DependentUpon>PrinterSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIManager\ReceiptInformationManager.cs" />
+    <Compile Include="UIManager\ResourceManager.cs" />
+    <Compile Include="SearchPortSamplePage.xaml.cs">
+      <DependentUpon>SearchPortSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIManager\SelectedModelManager.cs" />
+    <Compile Include="UIManager\SelectSettingWindow.xaml.cs">
+      <DependentUpon>SelectSettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIManager\SharedInformationManager.cs" />
+    <Compile Include="UIManager\Util.cs" />
+    <Page Include="AllReceiptsExtSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllReceiptsSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="APISamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BarcodeReaderExtSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BlackMarkPasteSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BlackMarkSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BluetoothSettingSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CashDrawerExtSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CashDrawerSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CombinationExtSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CombinationPrinterDriverSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CombinationSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeviceStatusSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayExtSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplaySamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageModeSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrinterDriverWithBarcodeReaderSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrinterDriverWithCheckStatusSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrinterDriverWithDisplaySamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrinterDriverWithScaleSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrinterExtSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScaleExtSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScaleSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIManager\EnterTextWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UIManager\ListBoxItem.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PrinterSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIManager\ProgressBarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchPortSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIManager\SelectSettingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIManager\NotifyIconForm.resx">
+      <DependentUpon>NotifyIconForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_french.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_german.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_japanese.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_portuguese.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_russian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_simplified_chinese.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_spanish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon_image_traditional_chinese.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sphere_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star_logo_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Refresh_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Resources\launch_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libs\SMCloudServicesSolution.dll" />
+    <Content Include="libs\StarIO.dll" />
+    <Content Include="libs\StarIOExtension.dll" />
+    <None Include="Resources\display_image_4.png" />
+    <None Include="Resources\display_image_3.png" />
+    <None Include="Resources\display_image_2.png" />
+    <None Include="Resources\display_image_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)Dependencies\$(PlatformName)\StarIOPort.dll" "$(TargetDir)"
+copy "$(ProjectDir)Dependencies\$(PlatformName)\GenerateBarcode.dll" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
